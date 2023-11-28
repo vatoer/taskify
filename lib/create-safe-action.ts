@@ -4,8 +4,8 @@ export type FieldErrors<T> = {
   [K in keyof T]?: string[];
 };
 
-export type ActionState<Tinput, TOutput> = {
-  fieldErrors?: FieldErrors<Tinput>;
+export type ActionState<TInput, TOutput> = {
+  fieldErrors?: FieldErrors<TInput>;
   error?: string | null;
   data?: TOutput;
 };
@@ -15,15 +15,14 @@ export const createSafeAction = <TInput, TOutput>(
   handler: (validatedData: TInput) => Promise<ActionState<TInput, TOutput>>
 ) => {
   return async (data: TInput): Promise<ActionState<TInput, TOutput>> => {
-    const validatedResult = schema.safeParse(data);
-
-    if (!validatedResult.success) {
+    const validationResult = schema.safeParse(data);
+    if (!validationResult.success) {
       return {
-        fieldErrors: validatedResult.error.flatten()
+        fieldErrors: validationResult.error.flatten()
           .fieldErrors as FieldErrors<TInput>,
       };
     }
 
-    return handler(validatedResult.data);
+    return handler(validationResult.data);
   };
 };

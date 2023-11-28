@@ -21,6 +21,7 @@ pnpm prisma db push
 pnpm add zod
 
 pnpm dlx shadcn-ui@latest add input
+pnpm dlx shadcn-ui@latest add label
 
 
 
