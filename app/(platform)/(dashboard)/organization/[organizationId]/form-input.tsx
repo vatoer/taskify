@@ -5,10 +5,12 @@ import { Input } from "@/components/ui/input";
 import { useFormStatus } from "react-dom";
 
 interface FormInputProps {
-  state: State;
+  errors?: {
+    title?: string[];
+  };
 }
 
-export const FormInput = ({ state }: FormInputProps) => {
+export const FormInput = ({ errors }: FormInputProps) => {
   const { pending } = useFormStatus();
   return (
     <div>
@@ -17,10 +19,11 @@ export const FormInput = ({ state }: FormInputProps) => {
         name="title"
         required
         placeholder="enter a boar dtitle"
+        disabled={pending}
       />
-      {state?.errors?.title ? (
+      {errors?.title ? (
         <div>
-          {state.errors.title.map((error: string) => (
+          {errors.title.map((error: string) => (
             <p key={error} className="text-rose-500">
               {error}
             </p>
