@@ -31,9 +31,11 @@ export const useAction = <TInput, TOutput>(
       try {
         const result = await action(data);
 
-        if (result.fieldErrors) {
-          setFieldErrors(result.fieldErrors);
+        if (!result) {
+          return;
         }
+
+        setFieldErrors(result.fieldErrors);
 
         if (result.error) {
           setError(result.error);
