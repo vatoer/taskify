@@ -17,7 +17,7 @@ interface FormSubmitProps {
     | "primary";
 }
 
-const FormSubmit = ({
+export const FormSubmit = ({
   children,
   disabled = false,
   className = "",

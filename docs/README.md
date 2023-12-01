@@ -22,7 +22,9 @@ pnpm add zod
 
 pnpm dlx shadcn-ui@latest add input
 pnpm dlx shadcn-ui@latest add label
+pnpm dlx shadcn-ui@latest add tooltip
+pnpm dlx shadcn-ui@latest add popover
 
-
+pnpm add sonner
 
 ```
