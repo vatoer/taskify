@@ -27,4 +27,7 @@ pnpm dlx shadcn-ui@latest add popover
 
 pnpm add sonner
 
+pnpm add lodash
+pnpm add -D @types/lodash
+
 ```
