@@ -55,9 +55,9 @@ const handler = async (data: InputType): Promise<ReturnType> => {
         orgId,
       },
     });
-  } catch (error) {
+  } catch (error: any) {
     return {
-      error: "Unable to create board",
+      error: error.message,
     };
   }
 
